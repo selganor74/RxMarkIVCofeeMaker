@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E06AF8E5-836F-4869-B30C-D4B625D56560}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MarkIV</RootNamespace>
+    <AssemblyName>MarkIV</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\packages\Rx-Linq.2.2.5\lib\net45\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>..\packages\Rx-PlatformServices.2.2.5\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CoffeeMaker\MarkIV.cs" />
+    <Compile Include="Devices\Concrete\Boiler.cs" />
+    <Compile Include="Devices\Concrete\Button.cs" />
+    <Compile Include="Devices\Concrete\Light.cs" />
+    <Compile Include="Devices\Concrete\PlateHeater.cs" />
+    <Compile Include="Devices\Concrete\PlateSensor.cs" />
+    <Compile Include="Devices\Concrete\ReliefValve.cs" />
+    <Compile Include="Devices\Events\BoilerEmpty.cs" />
+    <Compile Include="Devices\Events\BoilerRefilled.cs" />
+    <Compile Include="Devices\Events\BoilerStarted.cs" />
+    <Compile Include="Devices\Events\BoilerStopped.cs" />
+    <Compile Include="Devices\Events\ButtonDepressed.cs" />
+    <Compile Include="Devices\Events\ButtonPressed.cs" />
+    <Compile Include="Devices\Events\IButtonEvent.cs" />
+    <Compile Include="Devices\Events\IEvent.cs" />
+    <Compile Include="Devices\Events\ILightEvent.cs" />
+    <Compile Include="Devices\Events\IPlateHeaterEvent.cs" />
+    <Compile Include="Devices\Events\IPlateSensorEvent.cs" />
+    <Compile Include="Devices\Events\IReliefValveEvent.cs" />
+    <Compile Include="Devices\Events\LightLit.cs" />
+    <Compile Include="Devices\Events\LightUnlit.cs" />
+    <Compile Include="Devices\Events\PlateHeaterTurnedOff.cs" />
+    <Compile Include="Devices\Events\PlateHeaterTurnedOn.cs" />
+    <Compile Include="Devices\Events\PlateSensorHasEmptyPot.cs" />
+    <Compile Include="Devices\Events\PlateSensorHasNonEmptyPot.cs" />
+    <Compile Include="Devices\Events\PlateSensorHasNoPot.cs" />
+    <Compile Include="Devices\Events\ReliefValveClosed.cs" />
+    <Compile Include="Devices\Events\ReliefValveOpened.cs" />
+    <Compile Include="Devices\Events\WaterTemperatureIsUnder100Degrees.cs" />
+    <Compile Include="Devices\Events\WaterTemperatureReached100Degrees.cs" />
+    <Compile Include="Devices\IBoiler.cs" />
+    <Compile Include="Devices\Events\IBoilerEvent.cs" />
+    <Compile Include="Devices\IButton.cs" />
+    <Compile Include="Devices\ILight.cs" />
+    <Compile Include="Devices\IManageStatus.cs" />
+    <Compile Include="Devices\IPlateHeater.cs" />
+    <Compile Include="Devices\IPlateSensor.cs" />
+    <Compile Include="Devices\IReliefValve.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
