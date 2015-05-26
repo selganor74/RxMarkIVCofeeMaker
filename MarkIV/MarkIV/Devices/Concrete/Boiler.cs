@@ -16,12 +16,17 @@ namespace MarkIV.Devices.Concrete
         private WaterLevelStatus _waterLevelStatus;
         private int _waterLevelInCups;
 
+        // The mock implementation needs a plateSensor because as the waterboils, the pot will start filling
+        private IPlateSensor plateSensor;
+
         private Subject<IBoilerEvent> _eventSource;
         private IDisposable _boilingTimer;
         private IDisposable _waterLevelTimer;
 
-        public Boiler()
+        public Boiler(IPlateSensor plateSensor)
         {
+            this.plateSensor = plateSensor;
+
             _status = BoilerStatus.OFF;
             _waterTempStatus = WaterTemperatureStatus.NOT_BOILING;
             _waterLevelStatus = WaterLevelStatus.NOT_EMPTY;
@@ -86,6 +91,9 @@ namespace MarkIV.Devices.Concrete
                 _waterTempStatus = WaterTemperatureStatus.BOILING;
                 _eventSource.OnNext(new WaterTemperatureReached100Degrees());
                 _waterLevelTimer = Observable.Interval(TimeSpan.FromSeconds(1)).Subscribe(x => DecreaseWaterLevel());
+                
+                plateSensor.PutNonEmptyPot();
+                
                 try
                 {
                     _boilingTimer.Dispose();

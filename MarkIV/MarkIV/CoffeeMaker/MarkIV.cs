@@ -66,6 +66,8 @@ namespace MarkIV.CoffeeMaker
 
         private void EventProcessor(IEvent evt) {
 
+            Console.WriteLine(DateTime.Now.ToString() + " - Received Event: " + evt.GetType().ToString());
+
             if (evt is ButtonPressed)
             {
                 StartBrewing();
@@ -74,8 +76,6 @@ namespace MarkIV.CoffeeMaker
             if (evt is WaterTemperatureReached100Degrees)
             {
                 BrewingLight.TurnOn();
-                // Coffee is now filling the pot so...
-                PlateSensor.PutNonEmptyPot();
             }
 
             if (evt is BoilerEmpty)
@@ -101,7 +101,6 @@ namespace MarkIV.CoffeeMaker
                 PlateHeater.TurnOn();
             }
 
-            Console.WriteLine(DateTime.Now.ToString() + " - Received Event: " + evt.GetType().ToString());
         }
 
         private void StopBrewing()

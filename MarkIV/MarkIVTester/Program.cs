@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MarkIV.CoffeeMaker;
 using MarkIV.Devices.Concrete;
 using System.Reactive.Linq;
+using MarkIV.Devices;
 
 namespace MarkIVTester
 {
@@ -15,12 +16,13 @@ namespace MarkIVTester
            
         static void Main(string[] args)
         {
+            PlateSensor plateSensor = new PlateSensor();
             machine =
                 new MarkIV.CoffeeMaker.MarkIV(
                     new Button(),
                     new Light(),
-                    new PlateSensor(),
-                    new Boiler(),
+                    plateSensor,
+                    new Boiler(plateSensor),
                     new PlateHeater(),
                     new ReliefValve()
                 );
