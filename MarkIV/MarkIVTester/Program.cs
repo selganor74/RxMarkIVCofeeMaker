@@ -59,6 +59,7 @@ namespace MarkIVTester
                 machine.Boiler.Refill();
             if (command.Equals("status"))
                 Console.WriteLine( machine.GetStatusAsString() );
+            
             DisplayPrompt();
         }
 
@@ -70,7 +71,7 @@ namespace MarkIVTester
             Console.WriteLine("pressbutton    : Start Brewing");
             Console.WriteLine("removepot      : Remove Pot");
             Console.WriteLine("putemptypot    : Put Empty Pot");
-            Console.WriteLine("putnonemptypot : Put Empty Pot");
+            Console.WriteLine("putnonemptypot : Put NON Empty Pot");
             Console.WriteLine("refillboiler   : Fills the boiler");
             Console.WriteLine("status         : Prints Status");
             Console.WriteLine("CTRL+C         : Ends the simulation");
