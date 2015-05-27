@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MarkIV.CoffeeMaker
 {
-    public class MarkIV
+    public class MarkIV : IManageStatus<MarkIVStatus>
     {
         // Items Managed by the GUI
         public IBoiler Boiler;
@@ -71,34 +71,40 @@ namespace MarkIV.CoffeeMaker
             if (evt is ButtonPressed)
             {
                 StartBrewing();
+                return;
             }
 
             if (evt is WaterTemperatureReached100Degrees)
             {
                 BrewingLight.TurnOn();
+                return;
             }
 
             if (evt is BoilerEmpty)
             {
                 StopBrewing();
+                return;
             }
 
             if (evt is PlateSensorHasNoPot)
             {
                 SuspendBrewing();
                 PlateHeater.TurnOff();
+                return;
             }
 
             if (evt is PlateSensorHasEmptyPot)
             {
                 ResumeBrewing();
                 PlateHeater.TurnOff();
+                return;
             }
 
             if (evt is PlateSensorHasNonEmptyPot)
             {
                 ResumeBrewing();
                 PlateHeater.TurnOn();
+                return;
             }
         }
 
@@ -142,16 +148,14 @@ namespace MarkIV.CoffeeMaker
 
         private bool CanStartBrewing()
         {
-            return (_status == MarkIVStatus.STOPPED || _status == MarkIVStatus.IS_SUSPENDED) 
+            return ((IManageStatus<MarkIVStatus>)this).GetStatus() != MarkIVStatus.IS_BREWING 
                 && ((IManageStatus<WaterLevelStatus>)Boiler).GetStatus() == WaterLevelStatus.NOT_EMPTY
-                && (    PlateSensor.GetStatus() == PlateSensorStatus.HAS_EMPTY_POT
-                    ||  PlateSensor.GetStatus() == PlateSensorStatus.HAS_NON_EMPTY_POT
-                    );
+                && ((IManageStatus<PlateSensorStatus>)PlateSensor).GetStatus() != PlateSensorStatus.HAS_NO_POT;
         }
 
         public string GetStatusAsString()
         {
-            return String.Format("Machine Status: {0}\n", _status.ToString())
+            return String.Format("Machine Status: {0}\n", ((IManageStatus<MarkIVStatus>)this).GetStatus().ToString())
                  + String.Format("Boiler Status : {0}\n", ((IManageStatus<BoilerStatus>)Boiler).GetStatus().ToString())
                  + String.Format("Boiler Temp   : {0}\n", ((IManageStatus<WaterTemperatureStatus>)Boiler).GetStatus().ToString())
                  + String.Format("Boiler Level  : {0}\n", ((IManageStatus<WaterLevelStatus>)Boiler).GetStatus().ToString())
@@ -161,6 +165,11 @@ namespace MarkIV.CoffeeMaker
                  + String.Format("Flash Status  : {0}\n", ((IManageStatus<FlashStatus>)BrewingLight).GetStatus().ToString())
                  + String.Format("Relief Valve  : {0}\n", ((IManageStatus<ReliefValveStatus>)ReliefValve).GetStatus().ToString());
 
+        }
+
+        public MarkIVStatus GetStatus()
+        {
+            return _status;
         }
     }
 

@@ -32,8 +32,6 @@ namespace MarkIVTester
             foreach (string cmd in ReadInput()) {
                 ProcessCommand(cmd);
             }
-
-           
         }
 
         private static void DisplayPrompt()
@@ -47,18 +45,23 @@ namespace MarkIVTester
 
             if (command.Equals("?"))
                 DisplayHelp();
-            if (command.Equals("pressbutton"))
+            if (command.Equals("pressbutton") || command.Equals("p"))
                 machine.BrewButton.Press(null);
-            if (command.Equals("removepot"))
+            if (command.Equals("removepot") || command.Equals("r"))
                 machine.PlateSensor.RemovePot();
-            if (command.Equals("putemptypot"))
+            if (command.Equals("putemptypot") || command.Equals("e"))
                 machine.PlateSensor.PutEmptyPot();
-            if (command.Equals("putnonemptypot"))
+            if (command.Equals("putnonemptypot") || command.Equals("n"))
                 machine.PlateSensor.PutNonEmptyPot();
-            if (command.Equals("refillboiler"))
+            if (command.Equals("refillboiler") || command.Equals("b"))
                 machine.Boiler.Refill();
-            if (command.Equals("status"))
+            if (command.Equals("status") || command.Equals("s"))
                 Console.WriteLine( machine.GetStatusAsString() );
+            if (command.Equals("(c)ls") || command.Equals("c"))
+            {
+                Console.Clear();
+                DisplayHelp();
+            }
             
             DisplayPrompt();
         }
@@ -66,15 +69,15 @@ namespace MarkIVTester
         private static void DisplayHelp()
         {
             Console.WriteLine("Usage Instructions");
-            Console.WriteLine("-----------------------------------");
-            Console.WriteLine("?              : Print This Help");
-            Console.WriteLine("pressbutton    : Start Brewing");
-            Console.WriteLine("removepot      : Remove Pot");
-            Console.WriteLine("putemptypot    : Put Empty Pot");
-            Console.WriteLine("putnonemptypot : Put NON Empty Pot");
-            Console.WriteLine("refillboiler   : Fills the boiler");
-            Console.WriteLine("status         : Prints Status");
-            Console.WriteLine("CTRL+C         : Ends the simulation");
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine("?                : Print This Help");
+            Console.WriteLine("(P)ressButton    : Start Brewing");
+            Console.WriteLine("(R)emovePot      : Remove Pot");
+            Console.WriteLine("Put(E)mptyPot    : Put Empty Pot");
+            Console.WriteLine("Put(N)onEmptyPot : Put NON Empty Pot");
+            Console.WriteLine("Refill(B)oiler   : Fills the boiler");
+            Console.WriteLine("(S)tatus         : Prints Status");
+            Console.WriteLine("CTRL+C           : Ends the simulation");
         }
 
         static IEnumerable<string> ReadInput()
