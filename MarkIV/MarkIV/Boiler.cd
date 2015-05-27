@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="MarkIV.Devices.Events.BoilerEmpty" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Devices\Events\BoilerEmpty.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MarkIV.Devices.Events.BoilerRefilled" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Devices\Events\BoilerRefilled.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MarkIV.Devices.Events.BoilerStarted" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Devices\Events\BoilerStarted.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MarkIV.Devices.Events.BoilerStopped" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Devices\Events\BoilerStopped.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MarkIV.Devices.Events.ButtonDepressed" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Devices\Events\ButtonDepressed.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MarkIV.Devices.Events.ButtonPressed" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Devices\Events\ButtonPressed.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MarkIV.Devices.Concrete.Boiler">
+    <Position X="9.75" Y="3.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AFAABAACAAAgAAAAQAIAQAIAIAACBQAgQgAAAAAKAAA=</HashCode>
+      <FileName>Devices\Concrete\Boiler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_waterLevelStatus" />
+      <Field Name="_waterTempStatus" />
+      <Field Name="_status" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="MarkIV.Devices.Events.IEvent" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Devices\Events\IEvent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarkIV.Devices.Events.IBoilerEvent" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Devices\Events\IBoilerEvent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarkIV.Devices.IBoiler">
+    <Position X="9.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAQAIAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Devices\IBoiler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarkIV.Devices.IManageStatus&lt;T&gt;" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Devices\IManageStatus.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="System.IObservable&lt;T&gt;" Collapsed="true">
+    <Position X="13.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Enum Name="MarkIV.Devices.BoilerStatus" Collapsed="true">
+    <Position X="15" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Devices\IBoiler.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MarkIV.Devices.WaterTemperatureStatus" Collapsed="true">
+    <Position X="15" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBAAAAAAAAAA=</HashCode>
+      <FileName>Devices\IBoiler.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MarkIV.Devices.WaterLevelStatus" Collapsed="true">
+    <Position X="15" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Devices\IBoiler.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

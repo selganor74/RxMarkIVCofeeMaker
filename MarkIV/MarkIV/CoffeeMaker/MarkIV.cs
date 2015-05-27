@@ -15,10 +15,10 @@ namespace MarkIV.CoffeeMaker
         // Items Managed by the GUI
         public IBoiler Boiler;
         public IButton BrewButton;
-        public ILight BrewingLight;
         public IPlateSensor PlateSensor;
         
         // Internals
+        private ILight BrewingLight;
         private IPlateHeater PlateHeater;
         private IReliefValve ReliefValve;
 
@@ -100,7 +100,6 @@ namespace MarkIV.CoffeeMaker
                 ResumeBrewing();
                 PlateHeater.TurnOn();
             }
-
         }
 
         private void StopBrewing()
